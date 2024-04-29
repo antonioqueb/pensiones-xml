@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Subir XML de Nómina</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+<body class="flex-col py-24 bg-red-600 flex items-center justify-center min-h-screen" style="background-color: #631212;">
+    <div class="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow">
+        <h1 class="text-xl font-semibold text-gray-800">Subir archivo XML de Nómina</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <!-- Utilizando dorado para todos los mensajes para mantener la coherencia -->
+            <div class="alert alert-{{ category }} px-4 py-2 rounded-md text-sm font-medium text-white" style="background-color: #631212;">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/" method="post" enctype="multipart/form-data" class="space-y-4">
+            <!-- Botón de carga de archivo, ahora en azul claro -->
+            <input type="file" name="xmlfile" required class="block w-full text-sm text-gray-600
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-md file:border-0
+                file:text-sm file:font-semibold
+                file:bg-red-700 file:text-white
+                hover:file:bg-red-800">
+            <!-- Botón de envío también en dorado -->
+            <input type="submit" value="Subir" class="bg-red-700 w-full px-4 py-2 text-sm font-medium text-white" >
+        </form>
+        <!-- Botón para ver la tabla de nóminas -->
+        
+    </div>
+
+    <a href="/tabla" class="block text-center mt-4 bg-white text-[#631212]  hover:bg-red-50 font-bold py-4 px-4 rounded">
+        Ver Tabla de Nóminas
+    </a>
+</body>
+</html>

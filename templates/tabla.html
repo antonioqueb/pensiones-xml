@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Nóminas</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <style>
+        .text-small {
+            font-size: 0.65rem; /* Reducir el tamaño de fuente */
+        }
+        .table-wrap {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow-x: auto; /* para mantener las esquinas redondeadas en el desplazamiento */
+        }
+        table {
+        font-family: 'Arial', sans-serif;
+        font-size: 0.9rem;
+        }
+        tbody tr:hover {
+        background-color: #f3f4f6;
+        }
+   
+
+
+    a {
+        background-color: #0077b6;
+        padding: 8px 16px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none; /* Elimina el subrayado */
+    }
+    a:hover {
+        background-color: #0096c7;
+    }
+
+    @media screen and (max-width: 600px) {
+        thead th:nth-last-child(-n+3), tbody td:nth-last-child(-n+3) {
+            display: none; /* oculta las últimas tres columnas en pantallas pequeñas */
+        }
+    }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4">
+        <section class="flex flex-row jus items-center justify-between my-12">
+            <h1 class="text-xl font-semibold text-gray-800">Detalle de las Nominas</h1>
+            <a href="/" class="bg-red-800 text-white px-4 py-2 mx-6 rounded-lg" >Cargar XML</a>
+        </section>
+        <div class="bg-white p-6 rounded-lg shadow-lg table-wrap">
+            <table class="min-w-full table-auto">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Folio</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Fecha de Pago</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Fecha Inicial Pago</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Fecha Final Pago</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Días Pagados</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Percepciones</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Deducciones</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Otros Pagos</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Certificado</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">RFC Receptor</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Nombre Receptor</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Versión</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase text-small">Tipo de Nómina</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for nomina in nominas %}
+                    <tr>
+                        <!-- Aplicar la clase text-small a todas las celdas para mantener un tamaño de texto consistente y pequeño -->
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[0] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[1] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[2] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[3] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[4] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[5] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[6] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[7] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[8] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[9] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[10] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[11] }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-small">{{ nomina[12] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
