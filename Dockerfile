@@ -8,6 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 COPY app.py .
 COPY static/ static/
+COPY templates/ templates/  # Asegúrate de incluir esta línea
 
 # Instalar Flask
 RUN pip install -r requirements.txt
